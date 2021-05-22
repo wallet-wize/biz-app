@@ -85,10 +85,12 @@ window.localStorage.setItem("shoots", JSON.stringify(newShoots));
   return newShoots;
 };
 
-export default {
+const localData = {
   getAllShoots,
   getSingleShoot,
   addShoot,
   updateShoot,
   removeShoot,
-};
+}
+
+export default localData
