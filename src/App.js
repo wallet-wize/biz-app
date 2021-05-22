@@ -1,46 +1,37 @@
-import React, { useState } from 'react';
-import localData from './Api/localData';
+import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Home from './views/Home';
+import Clients from './views/Clients';
+import Photos from './views/Photos';
+import Register from './views/Register';
+import SignIn from './views/SignIn';
+import AddShoot from './views/AddShoot';
+import SingleShoot from './views/SingleShoot';
+import AllShoots from './views/AllShoots';
+import Schedule from './views/Schedule';
+import {CssBaseline } from '@material-ui/core';
 
-function App() {
-  const [shoots, setShoots] = useState(localData.getAllShoots())
-
-  const testAdd = () => {
-const newShoots = localData.addShoot({
-  name: "Nwabisa",
-  surname: "Dlokweni",
-  date: "16 April 2021",
-  location: " Langa",
-  price: "R400",
-  expenses: "transport = R100"
-})
-
-setShoots(newShoots);
-  }
-
-  const testUpdate = (id) => {
-    const newShoots = localData.updateShoot(id, "name", "Namhla Mthi");
-    setShoots(newShoots);
-  }
-
-  const testRemove = (id) => {
-    const newShoots = localData.removeShoot(id);
-setShoots(newShoots);
-  }
-
-  return (
-    <div> 
-      <button onClick={testAdd}> ADD SHOOT</button>
-  
-<div>
-      {shoots.map(({ name, id }) =>(
-        <div>
-          {name} <button onClick={() => testUpdate(id)}> UPDATE SHOOT</button>
-      <button onClick={() => testRemove(id)}> REMOVE SHOOT</button>
-</div>
-      ))}
-    </div>
-    </div>
-  );
+const App = () => {
+    return (
+        <>
+        <CssBaseline/>
+        <BrowserRouter>
+        <Switch>
+            <Route path = "/SignIn"><SignIn/> </Route>
+            <Route path = "/Register"><Register/></Route>
+            <Route path = "/Schedule"><Schedule/></Route>
+            <Route path = "/AddShoot"><AddShoot/></Route>
+            <Route path = "/AllShoots"><AllShoots/></Route>
+            <Route path = "/SingleShoot"><SingleShoot/></Route>
+            <Route path = "/Photos"><Photos/></Route>
+            <Route path = "/Clients"><Clients/></Route>
+            <Route path="/"><Home /></Route>
+           
+        </Switch>
+        </BrowserRouter>
+</>
+    )
 }
 
 export default App;
+
