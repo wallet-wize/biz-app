@@ -5,5 +5,5 @@ const SingleShoot=()=> {
         <h1>SingleShoot</h1>
         </div>) 
 }
-
+ 
 export default SingleShoot

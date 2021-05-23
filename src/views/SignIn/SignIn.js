@@ -5,9 +5,9 @@ const SignIn =()=> {
     return ( 
     <div>
         <h1>SignIn</h1>
-        Email Address: <input text = "textfield" placeholder="Thato@gmail.com"/><br/>
+        Email Address: <TextField variant="outlined" placeholder="Thato@gmail.com"/><br/>
         <br/>
-        Password: <input text = "textfield" placeholder="#12wftG"/><br/>
+        Password: <TextField variant="outlined" placeholder="#12wftG"/><br/>
         <br/>
         <Button variant ="contained" href="Schedule">Sign In</Button>
 
