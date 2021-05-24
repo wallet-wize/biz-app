@@ -25,35 +25,21 @@ const StyledButton = styled(Button)`
 `;
 
 const Schedule = () => {
-//   const [AllShoots, setAllShoots] = useState();
-
   return (
-   
     <Page>
-      <h2>Schedule</h2> 
-         <a href="/AllShoots">back</a>
+      <h2>Schedule</h2>
+      <br />
+      <a href="/AllShoots">back</a>
       <StyledCard>
-        <StyledButton
-          variant="contained"
-        //   disabled={showing === "AllShoots"}
-        //   onClick={() => setAllShoots("AllShoots")}
-        >
+        <StyledButton variant="contained">
           <AddIcon />
         </StyledButton>
 
-        <StyledButton
-          variant="contained"
-        //   disabled={showing === "AllShoots"}
-        //   onClick={() => setAllShoots("AllShoots")}
-        >
+        <StyledButton variant="contained">
           <EditIcon />
         </StyledButton>
 
-        <StyledButton
-          variant="contained"
-        //   disabled={showing === "AllShoots"}
-        //   onClick={() => setAllShoots("AllShoots")}
-        >
+        <StyledButton variant="contained">
           <RemoveIcon />
         </StyledButton>
       </StyledCard>
