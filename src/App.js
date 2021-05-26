@@ -1,4 +1,6 @@
 import React from "react";
+// import { useState } from "react";
+// import ModalDialog from "./views/SignIn/ModalDialog";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Home from "./views/Home";
 import Clients from "./views/Clients";
@@ -12,7 +14,17 @@ import Schedule from "./views/Schedule";
 // import Header from "./views/Header";
 import { CssBaseline } from "@material-ui/core";
 
-const App = () => {
+ const App = () => {
+//   const [open, setOpen] = useState(false);
+
+//   const handleOpen = () => {
+//     setOpen(true);
+//   };
+
+//   const handleClose = () => {
+//     setOpen(false);
+//   };
+
   return (
     <>
       <CssBaseline />
