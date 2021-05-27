@@ -9,7 +9,6 @@ import Register from "./views/Register";
 import SignIn from "./views/SignIn";
 import AddShoot from "./views/AddShoot";
 import SingleShoot from "./views/SingleShoot";
-import AllShoots from "./views/AllShoots";
 import Schedule from "./views/Schedule";
 // import Header from "./views/Header";
 import { CssBaseline } from "@material-ui/core";
@@ -41,9 +40,6 @@ import { CssBaseline } from "@material-ui/core";
           </Route>
           <Route path="/AddShoot">
             <AddShoot />
-          </Route>
-          <Route path="/AllShoots">
-            <AllShoots />
           </Route>
           <Route path="/SingleShoot">
             <SingleShoot />
