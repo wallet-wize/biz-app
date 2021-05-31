@@ -29,10 +29,9 @@ const Schedule = () => {
     <Page>
       <h2>Schedule</h2>
       <br />
-      <a  href="/AddShoot">back</a>
       <StyledCard>
-        <StyledButton variant="contained">
-          <AddIcon />
+        <StyledButton variant="contained" href="/AddShoot" >
+          <AddIcon href="/AddShoot" />
         </StyledButton>
 
         <StyledButton variant="contained">
