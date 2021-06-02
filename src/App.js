@@ -1,4 +1,6 @@
 import React from "react";
+// import { useState } from "react";
+// import ModalDialog from "./views/SignIn/ModalDialog";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Home from "./views/Home";
 import Clients from "./views/Clients";
@@ -7,12 +9,21 @@ import Register from "./views/Register";
 import SignIn from "./views/SignIn";
 import AddShoot from "./views/AddShoot";
 import SingleShoot from "./views/SingleShoot";
-import AllShoots from "./views/AllShoots";
 import Schedule from "./views/Schedule";
 // import Header from "./views/Header";
 import { CssBaseline } from "@material-ui/core";
 
-const App = () => {
+ const App = () => {
+//   const [open, setOpen] = useState(false);
+
+//   const handleOpen = () => {
+//     setOpen(true);
+//   };
+
+//   const handleClose = () => {
+//     setOpen(false);
+//   };
+
   return (
     <>
       <CssBaseline />
@@ -29,9 +40,6 @@ const App = () => {
           </Route>
           <Route path="/AddShoot">
             <AddShoot />
-          </Route>
-          <Route path="/AllShoots">
-            <AllShoots />
           </Route>
           <Route path="/SingleShoot">
             <SingleShoot />
