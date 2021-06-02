@@ -1,6 +1,7 @@
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Register from "../Register/Register";
+import SignIn from "../SignIn/SignIn";
 //import RegisterLogIn from "./RegisterLogIn";
 
 const ModalDialog = ({ open, handleClose }) => {
@@ -10,8 +11,13 @@ const ModalDialog = ({ open, handleClose }) => {
       {/* // Register to be created */}
       <Register handleClose={handleClose} />
       {/* <FormLogIn handleClose={handleClose} /> */}
+
+      {/* // SignIn to be created */}
+      <SignIn handleClose={handleClose} />
+      {/* <FormLogIn handleClose={handleClose} /> */}
      
     </Dialog>
+
   );
 };
 
