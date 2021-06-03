@@ -29,7 +29,7 @@ const Home = () => {
       <Button variant="contained" href="/Register" onClick={handleOpen}>
         Register
       </Button>
-      <ModalDialog open={open} handleClose={handleClose} />
+      {/* <ModalDialog open={open} handleClose={handleClose} /> */}
     </div>
   );
 };

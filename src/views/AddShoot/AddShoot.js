@@ -96,7 +96,7 @@ const AddShoot = () => {
 
       <br />
 
-      <Button variant="contained" href="/AllShoots">
+      <Button variant="contained" href="/Schedule">
         Add Shoot
       </Button>
     </div>
