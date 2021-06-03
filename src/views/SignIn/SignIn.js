@@ -28,10 +28,14 @@ const SignIn = ({ handleClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleNext = () => {
+    window.open("/Schedule");
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
-    handleClose();
+    handleNext();
   };
 
 
@@ -57,7 +61,7 @@ const SignIn = ({ handleClose }) => {
         <Button variant="contained" onClick={handleClose} href="/">
           Cancel
         </Button>
-        <Button type="submit" variant="contained" color="primary" href="/Schedule">
+        <Button type="submit" variant="contained" color="primary" >
           SignIn
         </Button>
       </div>
