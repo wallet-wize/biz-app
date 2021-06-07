@@ -1,3 +1,11 @@
+.body{
+  background-color: lavender;
+  color: navy;
+  margin: 0 auto;
+}
+
+
+
 /* p{
   color: rgb(136, 136, 136);
   font-family: monospace;

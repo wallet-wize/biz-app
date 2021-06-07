@@ -22,6 +22,9 @@ const Home = () => {
       Welcome to Wallet Wize App
         <AccountBalanceWalletOutlinedIcon />
      </h1>
+     
+     <img src="photographer" alt ="no"/><br/>
+
       <Button variant="contained" href="/SignIn" onClick={handleOpen}>
         SignIn
       </Button>

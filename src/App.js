@@ -12,6 +12,7 @@ import SingleShoot from "./views/SingleShoot";
 import Schedule from "./views/Schedule";
 // import Header from "./views/Header";
 import { CssBaseline } from "@material-ui/core";
+import './App.css';
 
  const App = () => {
 //   const [open, setOpen] = useState(false);

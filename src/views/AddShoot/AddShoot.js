@@ -11,7 +11,7 @@ const AddShoot = () => {
   const [value, setValue] = React.useState(100);
 
   return (
-    <div>
+    <div className="body">
       <h2>Add Shoot</h2>
       <br />
       <a href="/">Home </a>
