@@ -12,7 +12,26 @@ import SingleShoot from "./views/SingleShoot";
 import Schedule from "./views/Schedule";
 // import Header from "./views/Header";
 import { CssBaseline } from "@material-ui/core";
-import './App.css';
+import {createGlobalStyle} from  "styled-components";
+import { makeStyles } from '@material-ui/core';
+
+const Global = createGlobalStyle`
+body{
+  background-color: lavender;
+  color: navy;
+  //height: 100vh;
+  //height: 550px;
+  //width: 100px;
+   margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: theme.spacing(4);
+}
+button:hover{
+  background-color:lavender
+}
+`
 
  const App = () => {
 //   const [open, setOpen] = useState(false);
@@ -28,6 +47,7 @@ import './App.css';
   return (
     <>
       <CssBaseline />
+      <Global/>
       <BrowserRouter>
         <Switch>
           <Route path="/SignIn">
