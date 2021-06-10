@@ -26,23 +26,28 @@ const StyledButton = styled(Button)`
 
 const Schedule = () => {
   return (
-    <Page>
+    <div className="body">
+
+<Page>
       <h2>Schedule</h2>
       <br />
       <StyledCard>
-        <StyledButton variant="contained" href="/AddShoot" >
+        <StyledButton style={{ color: "navy"}} variant="contained" href="/AddShoot" >
           <AddIcon href="/AddShoot" />
         </StyledButton>
 
-        <StyledButton variant="contained">
+        <StyledButton style={{ color: "navy"}} variant="contained">
           <EditIcon />
         </StyledButton>
 
-        <StyledButton variant="contained">
+        <StyledButton style={{ color: "navy"}} variant="contained">
           <RemoveIcon />
         </StyledButton>
       </StyledCard>
     </Page>
+
+    </div>
+    
   );
 };
 

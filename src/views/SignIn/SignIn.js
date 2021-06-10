@@ -58,10 +58,10 @@ const SignIn = ({ handleClose }) => {
         onChange={e => setPassword(e.target.value)}
       />
       <div>
-        <Button variant="contained" onClick={handleClose} href="/">
+        <Button style = {{color: "navy", fontWeight:"bold"}} variant="contained" onClick={handleClose} href="/">
           Cancel
         </Button>
-        <Button type="submit" variant="contained" color="primary" >
+        <Button style = {{color: "navy", fontWeight:"bold"}} type="submit" variant="contained" >
           SignIn
         </Button>
       </div>

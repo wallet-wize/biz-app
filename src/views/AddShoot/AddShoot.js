@@ -5,16 +5,17 @@ import AccessTimeOutlinedIcon from "@material-ui/icons/AccessTimeOutlined";
 import CalendarTodayOutlinedIcon from "@material-ui/icons/CalendarTodayOutlined";
 import { Grid, Typography } from "@material-ui/core";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
+import './AddShoot.css';
 
 const AddShoot = () => {
   //const [showShoot, setShowShoot] = useState("addShoot")
   const [value, setValue] = React.useState(100);
 
   return (
-    <div>
+    <div className="body">
       <h2>Add Shoot</h2>
       <br />
-      <a href="/">Home </a>
+      
       <h3>Client details</h3>
       Name: <TextField variant="outlined" placeholder="e.g Thato" />
       <br />
@@ -95,10 +96,12 @@ const AddShoot = () => {
       </Grid>
 
       <br />
+      
 
-      <Button variant="contained" href="/AllShoots">
+      <Button style = {{color: "navy", fontWeight:"bold"}} variant="contained" href="/Schedule">
         Add Shoot
       </Button>
+      <a href="/">Home </a>
     </div>
   );
 };
