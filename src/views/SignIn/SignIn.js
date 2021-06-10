@@ -29,7 +29,7 @@ const SignIn = ({ handleClose }) => {
   const [password, setPassword] = useState('');
 
   const handleNext = () => {
-    window.open("/Schedule");
+    window.location.replace("/Schedule");
   }
 
   const handleSubmit = e => {
