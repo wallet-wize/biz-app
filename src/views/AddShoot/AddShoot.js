@@ -1,10 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 import { Button, TextField, TextareaAutosize } from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@material-ui/icons/AccessTimeOutlined";
 import CalendarTodayOutlinedIcon from "@material-ui/icons/CalendarTodayOutlined";
 import { Grid, Typography } from "@material-ui/core";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
+// import localData from "./api/localData";
+
+const Title = styled.h2`
+  padding-bottom: 100px;
+`;
+
+const StyledTextField = styled(TextField)`
+  && {
+    margin-bottom: 200px;
+  }
+`;
 
 const AddShoot = () => {
   //const [showShoot, setShowShoot] = useState("addShoot")
@@ -12,23 +24,17 @@ const AddShoot = () => {
 
   return (
     <div>
-      <h2>Add Shoot</h2>
-      <br />
+      <Title>Add Shoot</Title>
       <a href="/">Home </a>
       <h3>Client details</h3>
-      Name: <TextField variant="outlined" placeholder="e.g Thato" />
-      <br />
-      <br />
-      Phone Number: <TextField
+      Name: <StyledTextField variant="outlined" placeholder="e.g Thato" />
+      Phone Number: < StyledTextField
         variant="outlined"
         placeholder="0781234560"
-      />{" "}
-      <br />
-      <br />
+      />
       Email Address:{" "}
-      <TextField variant="outlined" placeholder="thato@gmail.com" />
-      <br />
-      <br />
+      <StyledTextField variant="outlined" placeholder="thato@gmail.com" />
+      
       <hr />
       <h3>Shoot details:</h3>
       <CalendarTodayOutlinedIcon />{" "}
@@ -39,9 +45,7 @@ const AddShoot = () => {
       <br />
       <br />
       <LocationOnOutlinedIcon />{" "}
-      <TextField variant="outlined" placeholder="sila!" />
-      <br />
-      <br />
+      < StyledTextField variant="outlined" placeholder="sila!" />
       <hr />
       <h3>Activities:</h3>
       <TextareaAutosize
@@ -51,7 +55,6 @@ const AddShoot = () => {
       />
       <br />
       <hr />
-      
       <h3>Prices:</h3>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
@@ -93,10 +96,8 @@ const AddShoot = () => {
           />
         </Grid>
       </Grid>
-
       <br />
-
-      <Button variant="contained" href="/AllShoots">
+      <Button variant="contained" href="/Schedule">
         Add Shoot
       </Button>
     </div>
