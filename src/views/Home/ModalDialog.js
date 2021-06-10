@@ -2,6 +2,7 @@ import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import Register from "../Register/Register";
 import SignIn from "../SignIn/SignIn";
+import AddShoot from "../AddShoot/AddShoot";
 //import RegisterLogIn from "./RegisterLogIn";
 
 const ModalDialog = ({ open, handleClose }) => {
@@ -14,6 +15,10 @@ const ModalDialog = ({ open, handleClose }) => {
 
       {/* // SignIn to be created */}
       <SignIn handleClose={handleClose} />
+      {/* <FormLogIn handleClose={handleClose} /> */}
+
+      {/* // AddShoot to be created */}
+      <AddShoot handleClose={handleClose}/>
       {/* <FormLogIn handleClose={handleClose} /> */}
      
     </Dialog>
