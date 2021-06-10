@@ -14,7 +14,7 @@ const AddShoot = () => {
   return (
     <div className="body">
       <h2>Add Shoot</h2>
-      <br />
+      
       
       <h3>Client details</h3>
       Name: <TextField variant="outlined" placeholder="e.g Thato" />
@@ -46,7 +46,7 @@ const AddShoot = () => {
       <hr />
       <h3>Activities:</h3>
       <TextareaAutosize
-        aria-label="minimum height"
+        aria-label="empty textarea"
         rowsMin={3}
         placeholder="Type of shoot you want"
       />
@@ -101,7 +101,7 @@ const AddShoot = () => {
       <Button style = {{color: "navy", fontWeight:"bold"}} variant="contained" href="/Schedule">
         Add Shoot
       </Button>
-      <a href="/">Home </a>
+      <a href="/" style={{color:"navy"}}>Home </a>
     </div>
   );
 };
