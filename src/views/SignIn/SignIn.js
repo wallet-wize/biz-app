@@ -28,15 +28,10 @@ const SignIn = ({ handleClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleNext = () => {
-    window.open("/Schedule");
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
-    handleNext();
-  };
+     };
 
 
   return (
@@ -70,53 +65,3 @@ const SignIn = ({ handleClose }) => {
 };
 
 export default SignIn;
-
-
-
-
-
-
-// import React from 'react';
-// import {Button, TextField} from "@material-ui/core";
-
-// const Register =()=> {
-//     return( <div>
-//         <h1>Register</h1>
-//         Email:  <TextField placeholder="e.g dlokweni@gmail.com"/> <br/>
-//         <br/>
-//         Password: <TextField placeholder="e.g #12frgutyfG"/> <br/> 
-//         <br/>
-//         confirm Password: <TextField placeholder = " e.g #12frgutyfG"/>
-//         <br/>
-//         <Button variant="contained" href="/Schedule">Register</Button>
-        
-
-
-//     </div>)
-// }
-
-// export default Register
-
-
-// import React from 'react';
-// import {Button, TextField} from "@material-ui/core";
-
-// const SignIn =()=> {
-//     return ( 
-//     <div>
-//         <form> 
-//         <h1>SignIn</h1>
-//         Email Address: <TextField variant="outlined" placeholder="Thato@gmail.com"/><br/>
-//         <br/>
-//         Password: <TextField variant="outlined" placeholder="#12wftG"/><br/>
-//         <br/>
-//         <Button variant ="contained" href="Schedule">Sign In</Button>
-
-// </form>
-
-
-//     </div>
-//     )
-// }
-
-// export default SignIn

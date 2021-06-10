@@ -30,16 +30,10 @@ const Register = ({ handleClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleNext = () => {
-    window.open("/Schedule");
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
     console.log(firstName, lastName, email, password);
-    handleNext();
   };
-
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
