@@ -42,6 +42,7 @@ const Register = ({ handleClose }) => {
 
 
   return (
+    <div className="body">
     <form className={classes.root} onSubmit={handleSubmit}>
       <TextField
         label="First Name"
@@ -73,15 +74,16 @@ const Register = ({ handleClose }) => {
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
-      <div>
-        <Button variant="contained"  href="/">
+      <div className ="buttons">
+        <Button style={{ color: "navy", fontWeight: "bold" }} variant="contained"  href="/">
           Cancel
         </Button>
-        <Button type="submit" variant="contained" onClick={handleClose} color="primary" >
+        <Button style={{ color: "navy", fontWeight: "bold" }} type="submit" variant="contained" onClick={handleClose} >
           Register
         </Button>
       </div>
     </form>
+    </div>
   );
 };
 
