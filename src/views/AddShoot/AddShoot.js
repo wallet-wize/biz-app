@@ -22,8 +22,18 @@ const AddShoot = () => {
   //const [showShoot, setShowShoot] = useState("addShoot")
   const [value, setValue] = React.useState(100);
 
+  const handleNext = () => {
+    window.location.replace("/Schedule");
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('');
+    handleNext();
+  };
+
   return (
-    <div>
+    <div >
       <Title>Add Shoot</Title>
       <a href="/">Home </a>
       <h3>Client details</h3>

@@ -3,7 +3,7 @@ import "./Home.css";
 import { useState } from "react";
 import { Button } from "@material-ui/core";
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
-import ModalDialog from "./ModalDialog";
+// import ModalDialog from "./ModalDialog";
 
 
 
@@ -15,9 +15,9 @@ const Home = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div className="body">
