@@ -1,21 +1,28 @@
-import React, { Fragment } from "react";
-import { Button, Card } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Select, MenuItem } from "@material-ui/core";
 import styled from "styled-components";
 import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { Table } from "reactstrap";
+import faker from 'faker';
+import fakerE from 'faker-extra';
+import {format} from 'date-fns';
 
+const SHOOT_TYPES = [
+  "Wedding",
+  "Babyshower",
+  "Profile",
+  "Birthday"
+];
 
-const props = {
-  shoots: [
-    { id: "67", customer: "Zan", date: new Date('10 January 2022'), type: "Baby Shower" },
-    { id: "89", customer: "John", date: new Date('10 January 2022'), type: "Birthday party" },
-    { id: "90", customer: "Nwabs", date: new Date('10 January 2022'), type: "Wedding" },
-    { id: "68", customer: "Thato", date: new Date('10 January 2022'), type: "Profile" },
-  ]
+const FAKE_PROPS = {
+  shoots: fakerE.array(5, () => ({
+    id: faker.datatype.uuid(),
+    customer: faker.name.findName(),
+    date: faker.date.future(),
+    type: faker.random.arrayElement(SHOOT_TYPES),
+  }))
 }
-
 
 const Page = styled.div`
   display: flex;
@@ -36,7 +43,38 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const HeadCell = styled.th`
+  border: 1px solid;
+  padding: 1rem;
+`
+
+const DataCell = styled.td`
+  border: 1px solid;
+  padding: 1rem;
+`
+
+const HoverCell = styled.tr`
+  tr:hover
+  display: block;
+`
+
+const applySorting = (shoots, sorting) => {
+  if (sorting === "date-closest-furthest") {
+    return shoots.sort((a, b) => a.date.getTime() - b.date.getTime());
+  }
+};
+
 const Schedule = () => {
+  const [sorting, setSorting] = useState('date-closet-furthest');
+  const [search, setSearch] = useState("");
+
+  const [shoots] = useState(FAKE_PROPS.shoots);
+  const [displayedShoots, setDisplayedShoots] = useState([]);
+
+  useEffect(() => {
+    setDisplayedShoots(applySorting(shoots, sorting))
+  }, [sorting]);
+
   return (
     <div className="body">
 
@@ -52,31 +90,43 @@ const Schedule = () => {
           <EditIcon />
         </StyledButton>
 
-        <StyledButton style={{ color: "navy"}} variant="contained">
-          <RemoveIcon />
+        <StyledButton style={{ color: "navy"}} variant="contained" href="/Delete">
+          <RemoveIcon href="/Delete" />
         </StyledButton>
       </StyledCard>
-      <Fragment>
-        <Table>
-          <caption>ALL SHOOTS</caption>
-          <thead>
-            <tr>
-              <th>CUSTOMER</th>
-              <th>DATE</th>
-              <th>TYPE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.shoots.map(singleShoot => (
-              <tr key={singleShoot.id}>
-                <td>{singleShoot.customer}</td>
-                <td>{singleShoot.date}</td>
-                <td>{singleShoot.type}</td>
+      <div>
+        <Select 
+          value={sorting} 
+          variant="outlined"
+          onChange={(event) => setSorting(event.target.value)}
+        >
+          <MenuItem value="date-closest-furthest">Date (Closest - Further)</MenuItem>
+        </Select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <HeadCell>CUSTOMER</HeadCell>
+            <HeadCell>DATE</HeadCell>
+            <HeadCell>TYPE</HeadCell>
+            <HeadCell>DELETE</HeadCell>
+          </tr>
+        </thead>
+        
+        <tbody>
+          {FAKE_PROPS.shoots.map(({id, customer, date, type}) => {
+            return(
+              <tr>
+                <DataCell>{customer}</DataCell>
+                <DataCell>{format(date, "d MMMM yyyy")}</DataCell>
+                <DataCell>{type}</DataCell>
+                <DataCell><StyledButton>-</StyledButton></DataCell>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Fragment>
+            )
+          })}
+        </tbody>
+      </table>
+
     </Page>
 
     </div>
