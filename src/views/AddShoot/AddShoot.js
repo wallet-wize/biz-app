@@ -59,7 +59,7 @@ const AddShoot = () => {
       <hr />
       <h3>Activities:</h3>
       <TextareaAutosize
-        aria-label="minimum height"
+        aria-label="empty textarea"
         rowsMin={3}
         placeholder="Type of shoot you want"
       />
@@ -110,7 +110,7 @@ const AddShoot = () => {
       <Button variant="contained" href="/Schedule">
         Add Shoot
       </Button>
-      <a href="/">Home </a>
+      <a href="/" style={{color:"navy"}}>Home </a>
     </div>
   );
 };
