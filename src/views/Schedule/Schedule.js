@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, Card } from "@material-ui/core";
+import { Button, Card, Select, MenuItem, TextField } from "@material-ui/core";
 import { Edit as EditIcon, Delete as DeleteIcon } from "@material-ui/icons";
 import AddIcon from "@material-ui/icons/Add";
+import SearchIcon from "@material-ui/icons/Search";
 import { format } from "date-fns";
 
 import useSchedule from "./useSchedule";
@@ -40,8 +41,41 @@ const List = styled.div`
   justify-content: center;
 `;
 
+const Controls = styled.div`
+  padding: 1rem;
+`;
+
+const applySorting = (shoots, sorting, search) => {
+  const filteredShoots =
+    search.length < 3
+      ? shoots
+      : shoots.filter(
+          ({ customer, type }) =>
+            new RegExp(search, "i").test(customer) ||
+            new RegExp(search, "i").test(type)
+        );
+
+  if (sorting === "date-closest-furthest") {
+    return filteredShoots.sort((a, b) => a.date.getTime() - b.date.getTime());
+  }
+
+  if (sorting === "date-furthest-closest") {
+    return filteredShoots.sort((a, b) => b.date.getTime() - a.date.getTime());
+  }
+  throw new Error("Invalid sorting supplied");
+};
+
 export const Schedule = () => {
   const [{ shoots, alert, editing, deleting, adding }, actions] = useSchedule();
+  const [sorting, setSorting] = useState("date-closest-furthest");
+  const [search, setSearch] = useState("");
+  const [displayedShoots, setDisplayedShoots] = useState(
+    applySorting(shoots, sorting, search)
+  );
+
+  useEffect(() => {
+    setDisplayedShoots(applySorting(shoots, sorting, search));
+  }, [sorting, search]);
 
   if (editing) {
     return (
@@ -100,8 +134,37 @@ export const Schedule = () => {
         ADD SHOOT
       </StyledButton>
 
+      <Controls>
+        <TextField
+          variant="outlined"
+          label="Search"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+      </Controls>
+
+      <Controls>
+        <Select
+          value={sorting}
+          variant="outlined"
+          onChange={(event) => {
+            if (!event.target.value || typeof event.target.value !== "string")
+              throw new Error("No value on selection");
+            setSorting(event.target.value);
+          }}
+        >
+          <MenuItem value="date-closest-furthest">
+            Date (Closest - Furthest)
+          </MenuItem>
+
+          <MenuItem value="date-furthest-closest">
+            Date (Furthest - Closest)
+          </MenuItem>
+        </Select>
+      </Controls>
+
       <List>
-        {shoots.map(({ id, customer, date, type }) => {
+        {displayedShoots.map(({ id, customer, date, type }) => {
           return (
             <StyledCard key={id}>
               <div>
