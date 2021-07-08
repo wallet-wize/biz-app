@@ -21,23 +21,23 @@ export const useSchedule = () => {
   const [editing, setEditing] = useState(null);
   const [adding, setAdding] = useState(null);
 
-const [alert, setAlert] = useState();
+  const [alert, setAlert] = useState();
 
   const updateValue = (key, value) => {
     if (editing) {
-        return setEditing({
+      return setEditing({
         ...editing,
         [key]: value,
       });
     }
 
     if (adding) {
-     return setAdding({
+      return setAdding({
         ...adding,
         [key]: value,
       });
     }
-     throw new Error("updateValue was fired at an incorrect time")
+    throw new Error("updateValue was fired at an incorrect time");
   };
 
   /**
@@ -95,18 +95,17 @@ const [alert, setAlert] = useState();
       setAdding(null);
     }
 
-    if(!adding.customer || adding.customer === ""){
-        return setAlert("Please add customer name")
+    if (!adding.customer || adding.customer === "") {
+      return setAlert("Please add customer name");
     }
 
-    if(!adding.date){
-        return setAlert("Please add shoot date")
+    if (!adding.type || adding.type === "") {
+      return setAlert("Please add type of shoot");
     }
 
-    if(!adding.type || adding.type === ""){
-        return setAlert("Please add type of shoot")
+    if (!adding.date) {
+      return setAlert("Please add shoot date");
     }
-
 
     const newShoots = [adding, ...shoots];
     setShoots(newShoots);
