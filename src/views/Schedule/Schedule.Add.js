@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog, TextField } from "@material-ui/core";
-import { Cancel as CloseIcon } from "@material-ui/icons";
+import { Cancel as CloseIcon, Check as SaveIcon } from "@material-ui/icons";
 import AddIcon from "@material-ui/icons/Add";
-// //import RemoveIcon from "@material-ui/icons/Remove";
 import { format } from "date-fns";
 
 const DialogContent = styled.div`
@@ -43,9 +42,9 @@ export const Add = (props) => {
   } = props;
 
   const handleCustomerChange = (event) => onCustomerChange(event.target.value);
-  const handleDateChange = (event) => onDateChange(event.target.value);
-  const handleTypeChange = (event) =>
-    onTypeChange(new Date(event.target.value));
+  const handleTypeChange = (event) => onTypeChange(event.target.value);
+  const handleDateChange = (event) =>
+    onDateChange(new Date(event.target.value));
 
   return (
     <Dialog open>
@@ -53,6 +52,7 @@ export const Add = (props) => {
         <h1>Enter details:</h1>
 
         <StyledCard>
+          {alert}
           <TextFieldWrap>
             <TextField
               label="Customer"
@@ -70,6 +70,7 @@ export const Add = (props) => {
               label="Date"
               type="date"
               onChange={handleDateChange}
+              // value={format(date, "yyyy-MM-dd")}
               value={date ? format(date, "yyyy-MM-dd") : undefined}
               InputLabelProps={{
                 shrink: true,
@@ -77,8 +78,6 @@ export const Add = (props) => {
             />
           </TextFieldWrap>
         </StyledCard>
-
-        {alert}
 
         <ButtonArea>
           <StyledButton
