@@ -40,7 +40,7 @@ const ButtonArea = styled.div`
 `;
 
 export const Schedule = () => {
-  const [{editing, deleting}, actions] = useState();
+  const [{editing, deleting}, actions] = useSchedule();
 
   if(editing){
     return (
