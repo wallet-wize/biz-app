@@ -18,6 +18,13 @@ export const useSchedule = () => {
     const [deleting, setDeleting] = useState(null);
     const [editing, setEditing] = useState(null);
 
+    const updateValue = (key, value) => (
+      setEditing({
+        ...editing,
+        [key]: value,
+      })
+    )
+
     /**
      * @title handleEdit
      */
@@ -63,8 +70,9 @@ export const useSchedule = () => {
       }
 
       const actions = {
-          editing: handleDelete,
-          deleting: handleDelete
+          editing: handleEdit,
+          deleting: handleDelete,
+          update: updateValue
       }
     
       return [state, actions]
