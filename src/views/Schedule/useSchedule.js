@@ -39,6 +39,8 @@ export const useSchedule = () => {
           return {
             ...singleShoot,
             customer: editing.customer,
+            type: editing.type,
+            date: editing.date,
           };
         });
     

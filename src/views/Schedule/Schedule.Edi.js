@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog, TextField } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+import { Close as CancelIcon, Check as SaveIcon } from "@material-ui/icons";
 import { format } from "date-fns";
 import useSchedule from "./useSchedule";
 
@@ -24,7 +22,7 @@ const StyledButton = styled(Button)`
 `;
 
 /**
- * 
+ *
  * @typedef {object} props
  * @property {string} customer
  * @property {Date} date
@@ -38,74 +36,80 @@ const StyledButton = styled(Button)`
 
 /**
  * @title Edit
- * @param {props} props 
+ * @param {props} props
  * @returns {JSX.Element}
  */
 
 export const Edit = (props) => {
-  const {customer, date, type, onCancel, onSave, onCustomerChange, onDateChange, onTypeChange} = props; 
+  const {
+    customer,
+    date,
+    type,
+    onCustomerChange,
+    onDateChange,
+    onTypeChange,
+    onCancel,
+    onSave,
+  } = props;
 
-  
-  const handleCustomerChange = (event) => onCustomerChange(event.target.value)
-  const handleDateChange = (event) => onDateChange(event.target.value)
-  const handleTypeChange = (event) => onTypeChange(event.target.value)
-    return(
-        <Dialog open>
-            <DialogContent>
-                <h1>Please confirm</h1>
+  const handleCustomerChange = (event) => onCustomerChange(event.target.value);
+  const handleDateChange = (event) => onDateChange(event.target.value);
+  const handleTypeChange = (event) => onTypeChange(event.target.value);
+  return (
+    <Dialog open>
+      <DialogContent>
+        <h1>Please confirm</h1>
 
-                <StyledCard>
-                    <div>
-                    <TextField
-                        label="customer"
-                        value={customer}
-                        onChange={handleCustomerChange}
-                    />
-                    </div>
+        <StyledCard>
+          <div>
+            <TextField
+              label="customer"
+              value={customer}
+              onChange={handleCustomerChange}
+            />
+          </div>
 
-                    <div>
-                    <TextField
-                        label="Date"
-                        type="date"
-                        onChange={handleDateChange}
-                        value={format(date, "yyyy-MM-dd")}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                    />
-                    </div>
+          <div>
+            <TextField 
+              label="type" 
+              value={type} 
+              onChange={handleTypeChange} 
+            />
+          </div>
 
-                    <div>
-                    <TextField
-                        label="type"
-                        value={type}
-                        onChange={handleTypeChange}
-                    />
-                    </div>
+          <div>
+            <TextField
+              label="Date"
+              type="date"
+              onChange={handleDateChange}
+              value={format(date, "yyyy-MM-dd")}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </div>
+        </StyledCard>
 
-                    
-                </StyledCard>
+        <ButtonArea>
+          <StyledButton
+            startIcon={<CancelIcon />}
+            onClick={onCancel}
+            variant="contained"
+          >
+            Cancel
+          </StyledButton>
 
-                <ButtonArea>
-                    <StyledButton
-                    startIcon={<EditIcon />}
-                    onClick={onCancel}
-                    variant="contained"
-                    >
-                    Cancel
-                    </StyledButton>
-
-                    <StyledButton
-                    startIcon={<RemoveIcon />}
-                    onClick={onSave}
-                    variant="contained"
-                    >
-                    Save
-                    </StyledButton>
-                </ButtonArea>
-            </DialogContent>
-        </Dialog>
-    )
-}
+          <StyledButton
+            startIcon={<SaveIcon />}
+            onClick={onSave}
+            variant="contained"
+          >
+            Save
+          </StyledButton>
+        </ButtonArea>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export default Edit;

@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import RemoveIcon from "@material-ui/icons/Remove";
+import {Close as CancelIcon, Delete as DeleteIcon} from "@material-ui/icons";
 import { format } from "date-fns";
 
 
@@ -57,16 +56,16 @@ export const Delete = (props) => {
 
                 <ButtonArea>
                 <StyledButton
-                    startIcon={<EditIcon />}
-                    onClick={() => onCancel}
+                    startIcon={<CancelIcon />}
+                    onClick={onCancel}
                     variant="contained"
                 >
                     Cancel
                 </StyledButton>
 
                 <StyledButton
-                    startIcon={<RemoveIcon />}
-                    onClick={() => onDelete}
+                    startIcon={<DeleteIcon />}
+                    onClick={onDelete}
                     variant="contained"
                 >
                     Delete
