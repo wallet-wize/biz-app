@@ -70,8 +70,8 @@ export const useSchedule = () => {
       }
 
       const actions = {
-          editing: handleEdit,
-          deleting: handleDelete,
+          edit: handleEdit,
+          delete: handleDelete,
           update: updateValue
       }
     

@@ -48,11 +48,11 @@ export const Schedule = () => {
         <Edit
           date={editing.date}
           onDateChange={(newValue) => actions.update('date',newValue)}
-          customer="John Smith"
+          customer={editing.customer}
           onCancel={() => actions.edit(null)}
           onCustomerChange={(newValue) => actions.update('customer',newValue)}
           onSave={() => actions.edit(editing.id)}
-          type="Test type"
+          type={editing.type}
           onTypeChange={(newValue) => actions.update('type',newValue)}
         />
       </div>
@@ -62,14 +62,12 @@ export const Schedule = () => {
   if(deleting){
     return (
       <div>
-        <Edit
+        <Delete
           customer= {deleting.customer}
           date={deleting.date}
           onCancel={() => actions.delete(null)}
-          onCustomerChange={(newValue) => console.log(newValue)}
           onDelete={() => actions.delete(deleting.id)}
           type={deleting.type}
-          onTypeChange={(newValue) => console.log(newValue)}
         />
       </div>
     );
@@ -83,8 +81,9 @@ export const Schedule = () => {
             <StyledCard key={id}>
               <div>
                 <h1>{customer}</h1>
-                <h2>{format(date, "yyyy-MM-dd")}</h2>
                 <h3>{type}</h3>
+                <h2>{format(date, "yyyy-MM-dd")}</h2>
+                
 
                 <ButtonArea>
                   <StyledButton
