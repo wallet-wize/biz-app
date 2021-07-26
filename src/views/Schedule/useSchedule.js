@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as createId } from "uuid";
 import faker from "faker";
 import fakerE from "faker-extra";
 
@@ -15,15 +16,30 @@ const FAKE_PROPS = {
 
 export const useSchedule = () => {
     const [shoots, setShoots] = useState(FAKE_PROPS.shoots);
+
+    const [adding, setAdding] = useState(null);
     const [deleting, setDeleting] = useState(null);
     const [editing, setEditing] = useState(null);
+    
+    const [alert, setAlert] = useState(null);
 
-    const updateValue = (key, value) => (
-      setEditing({
-        ...editing,
-        [key]: value,
-      })
-    )
+    const updateValue = (key, value) => {
+      if(editing){
+        return setEditing({
+          ...editing,
+          [key]: value,
+        })
+      }
+      
+      if(adding){
+        return setAdding({
+          ...adding,
+          [key]: value,
+        })
+      }
+
+      throw new Error("updateValue was fired at an incorrect time")
+    }
 
     /**
      * @title handleEdit
@@ -63,18 +79,57 @@ export const useSchedule = () => {
           (singleShoot) => singleShoot.id !== deleting.id
         );
         setShoots(newShoots);
+        setDeleting(null);
       };
+
+      const handleAdd = (create) => {
+        if(create === true){
+          return setAdding({
+            id: createId,
+            customer: '',
+            date: null,
+            type: '',
+          })
+        }
+
+        if(create === false){
+          setAdding(null);
+        }
+
+        if(!adding.customer || adding.customer === ''){
+          return setAlert("Please add customer name.")
+        }
+
+        if(!adding.type || adding.type === ''){
+          return setAlert("Please add shoot type.")
+        }        
+
+        if(!adding.date || adding.date === ''){
+          return setAlert("Please add shoot date.")
+        }
+
+        const newShoots = [
+          adding,
+          ...shoots,
+        ]
+        setShoots(newShoots);
+
+        setAdding(null);
+      }
 
       const state = {
           shoots,
+          adding,
           editing,
-          deleting
+          deleting,
+          alert
       }
 
       const actions = {
           edit: handleEdit,
           delete: handleDelete,
-          update: updateValue
+          update: updateValue,
+          add: handleAdd,
       }
     
       return [state, actions]

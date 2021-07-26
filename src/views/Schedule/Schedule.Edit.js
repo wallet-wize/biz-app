@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog, TextField } from "@material-ui/core";
 import { Cancel as CloseIcon, Check as CheckIcon } from "@material-ui/icons";
-//import AddIcon from "@material-ui/icons/Add";
-//import RemoveIcon from "@material-ui/icons/Remove";
+
 import { format } from "date-fns";
 
 const DialogContent = styled.div`
@@ -57,8 +56,8 @@ export const Edit = (props) => {
   } = props;
 
   const handleCustomerChange = (event) => onCustomerChange(event.target.value);
-  const handleDateChange = (event) => onDateChange(event.target.value);
-  const handleTypeChange = (event) => onTypeChange(new Date(event.target.value));
+  const handleDateChange = (event) => onDateChange(new Date(event.target.value));
+  const handleTypeChange = (event) => onTypeChange(event.target.value);
 
   return (
     <Dialog open>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog, TextField } from "@material-ui/core";
-import { Cancel as CloseIcon, Check as SaveIcon } from "@material-ui/icons";
-import AddIcon from "@material-ui/icons/Add";
+import { Cancel as CloseIcon, Add as CheckIcon } from "@material-ui/icons";
+
 import { format } from "date-fns";
 
 const DialogContent = styled.div`
@@ -25,8 +25,23 @@ const ButtonArea = styled.div`
 `;
 
 const TextFieldWrap = styled.div`
-  padding: 0.5rem 0;
-`;
+padding: 0.5rem 0;
+`
+
+/**
+ *
+ * @typedef {object} props
+ * @property {string} customer
+ * @property {(onCustomerChange: string) => void} onCustomerChange
+ * @property {function} onCancel
+ * @property {function} onSave
+ */
+
+/**
+ * @title Add
+ * @param {props} props
+ * @returns {JSX.Element}
+ */
 
 export const Add = (props) => {
   const {
@@ -42,17 +57,15 @@ export const Add = (props) => {
   } = props;
 
   const handleCustomerChange = (event) => onCustomerChange(event.target.value);
+  const handleDateChange = (event) => onDateChange(new Date(event.target.value));
   const handleTypeChange = (event) => onTypeChange(event.target.value);
-  const handleDateChange = (event) =>
-    onDateChange(new Date(event.target.value));
 
   return (
     <Dialog open>
       <DialogContent>
-        <h1>Enter details:</h1>
+        <h1>Enter Details</h1>
 
         <StyledCard>
-          {alert}
           <TextFieldWrap>
             <TextField
               label="Customer"
@@ -70,14 +83,15 @@ export const Add = (props) => {
               label="Date"
               type="date"
               onChange={handleDateChange}
-              // value={format(date, "yyyy-MM-dd")}
-              value={date ? format(date, "yyyy-MM-dd") : undefined}
+              value={date ? format(date, "yyyy-MM-dd"): undefined}
               InputLabelProps={{
                 shrink: true,
               }}
             />
           </TextFieldWrap>
         </StyledCard>
+
+        {alert}
 
         <ButtonArea>
           <StyledButton
@@ -89,7 +103,7 @@ export const Add = (props) => {
           </StyledButton>
 
           <StyledButton
-            startIcon={<AddIcon />}
+            startIcon={<CheckIcon />}
             onClick={onSave}
             variant="contained"
           >
@@ -100,5 +114,4 @@ export const Add = (props) => {
     </Dialog>
   );
 };
-
 export default Add;

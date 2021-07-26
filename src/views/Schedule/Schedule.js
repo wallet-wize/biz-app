@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button, Card, Dialog, TextField } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
+import { Button, Card} from "@material-ui/core";
+import {Edit as EditIcon, Delete as DeleteIcon} from "@material-ui/icons";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { format } from "date-fns";
 import useSchedule from "./useSchedule";
 import Edit from "./Schedule.Edit";
 import Delete from "./Schedule.Delete";
+import Add from "./Schedule.Add";
 
 const Page = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ const ButtonArea = styled.div`
 `;
 
 export const Schedule = () => {
-  const [{shoots, editing, deleting}, actions] = useSchedule();
+  const [{shoots, alert, editing, deleting, adding}, actions] = useSchedule();
 
   if(editing){
     return (
@@ -73,8 +73,35 @@ export const Schedule = () => {
     );
   }
 
+  if(adding){
+    return (
+      <div>
+        <Add
+          date={adding.date}
+          onDateChange={(newValue) => actions.update('date',newValue)}
+          customer={adding.customer}
+          onCancel={() => actions.add(null)}
+          onCustomerChange={(newValue) => actions.update('customer',newValue)}
+          onSave={() => actions.add(adding.id)}
+          type={adding.type}
+          onTypeChange={(newValue) => actions.update('type',newValue)}
+          alert = {alert}
+        />
+      </div>
+    );
+  }
+
   return (
     <Page>
+      <h1>Schedule</h1>
+      <StyledButton
+        startIcon={<EditIcon />}
+        onClick={() => actions.add(true)}
+        variant="contained"
+      >
+        ADD SHOOT
+      </StyledButton>
+
       <List>
         {shoots.map(({ id, customer, date, type }) => {
           return (
@@ -95,7 +122,7 @@ export const Schedule = () => {
                   </StyledButton>
 
                   <StyledButton
-                    startIcon={<RemoveIcon />}
+                    startIcon={<DeleteIcon />}
                     onClick={() => actions.delete(id)}
                     variant="contained"
                   >
