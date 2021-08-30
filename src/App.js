@@ -10,7 +10,7 @@ import SignIn from "./views/SignIn";
 import AddShoot from "./views/AddShoot";
 import SingleShoot from "./views/SingleShoot";
 import Schedule from "./views/Schedule";
-// import Header from "./views/Header";
+import Slideshow from "./views/Slideshow";
 import { CssBaseline } from "@material-ui/core";
 import {createGlobalStyle} from  "styled-components";
 import { makeStyles } from '@material-ui/core';
@@ -73,6 +73,9 @@ button:hover{
           </Route> */}
           <Route path="/Clients">
             <Clients />
+          </Route>
+          <Route path="/Slideshow">
+            <Slideshow />
           </Route>
           <Route path="/">
             <Home />
