@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, Card, Dialog, TextField } from "@material-ui/core";
+import { Button, Card, Dialog } from "@material-ui/core";
 import { Cancel as CloseIcon, Delete as DeleteIcon } from "@material-ui/icons";
 //import EditIcon from "@material-ui/icons/Edit";
 //import RemoveIcon from "@material-ui/icons/Remove";

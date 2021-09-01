@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Button, Card, Dialog, TextField } from "@material-ui/core";
 import { Cancel as CloseIcon, Check as CheckIcon } from "@material-ui/icons";
@@ -26,8 +26,8 @@ const ButtonArea = styled.div`
 `;
 
 const TextFieldWrap = styled.div`
-padding: 0.5rem 0;
-`
+  padding: 0.5rem 0;
+`;
 
 /**
  *
@@ -57,8 +57,9 @@ export const Edit = (props) => {
   } = props;
 
   const handleCustomerChange = (event) => onCustomerChange(event.target.value);
-  const handleDateChange = (event) => onDateChange(event.target.value);
-  const handleTypeChange = (event) => onTypeChange(new Date(event.target.value));
+  const handleDateChange = (event) =>
+    onDateChange(new Date(event.target.value));
+  const handleTypeChange = (event) => onTypeChange(event.target.value);
 
   return (
     <Dialog open>
@@ -81,7 +82,7 @@ export const Edit = (props) => {
           <TextFieldWrap>
             <TextField
               label="Date"
-              type="date"
+              type={date}
               onChange={handleDateChange}
               value={format(date, "yyyy-MM-dd")}
               InputLabelProps={{

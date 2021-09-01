@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button, Card, Select, MenuItem, TextField } from "@material-ui/core";
 import { Edit as EditIcon, Delete as DeleteIcon } from "@material-ui/icons";
 import AddIcon from "@material-ui/icons/Add";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 import { format } from "date-fns";
 
 import useSchedule from "./useSchedule";
@@ -75,7 +75,7 @@ export const Schedule = () => {
 
   useEffect(() => {
     setDisplayedShoots(applySorting(shoots, sorting, search));
-  }, [sorting, search]);
+  })
 
   if (editing) {
     return (

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { Button } from "@material-ui/core";
 // import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
-import ModalDialog from "./ModalDialog";
+// import ModalDialog from "./ModalDialog";
 
 
 const useStyles = makeStyles(theme => ({
@@ -43,15 +43,16 @@ const Home = () => {
     console.log(email, password);
     handleNext();
   };
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(true);
+  // const [close, setClose] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   // const SignIn = () => {
 
@@ -92,7 +93,7 @@ const Home = () => {
             SignIn
           </Button>
           
-          <Button style={{ color: "navy", margin: "4px", fontWeight: "bold" }} variant="contained" href="/Register" onClick={handleOpen}>
+          <Button style={{ color: "navy", margin: "4px", fontWeight: "bold" }} variant="contained" href="/Register" >
         Register
       </Button>
         </div>
@@ -103,9 +104,9 @@ const Home = () => {
 
       
 
-      <Button style={{ color: "navy", fontWeight: "bold" }} variant="contained" href="/Slideshow" onClick={handleOpen}>
+      {/* <Button style={{ color: "navy", fontWeight: "bold" }} variant="contained" href="/Slideshow" onClick={handleOpen}>
         SLIDESHOW
-      </Button>
+      </Button> */}
       {/* <ModalDialog open={open} handleClose={handleClose} /> */}
     </div>
   );

@@ -1,7 +1,8 @@
 import React from "react";
-// import { useState } from "react";
-// import ModalDialog from "./views/SignIn/ModalDialog";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { CssBaseline } from "@material-ui/core";
+import { createGlobalStyle } from "styled-components";
+
 import Home from "./views/Home";
 import Clients from "./views/Clients";
 import Photos from "./views/Photos";
@@ -11,9 +12,6 @@ import AddShoot from "./views/AddShoot";
 import SingleShoot from "./views/SingleShoot";
 import Schedule from "./views/Schedule";
 import Slideshow from "./views/Slideshow";
-import { CssBaseline } from "@material-ui/core";
-import {createGlobalStyle} from  "styled-components";
-import { makeStyles } from '@material-ui/core';
 
 const Global = createGlobalStyle`
 body{
@@ -31,55 +29,51 @@ body{
 button:hover{
   background-color:lavender
 }
-`
+`;
 
- const App = () => {
-//   const [open, setOpen] = useState(false);
-
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
+const App = () => {
   return (
     <>
       <CssBaseline />
-      <Global/>
+      <Global />
       <BrowserRouter>
         <Switch>
           <Route path="/SignIn">
-            <SignIn />{" "}
+            <SignIn />
           </Route>
+
           <Route path="/Register">
             <Register />
           </Route>
+
           <Route path="/Schedule">
             <Schedule />
           </Route>
+
           <Route path="/AddShoot">
             <AddShoot />
           </Route>
+
           <Route path="/SingleShoot">
             <SingleShoot />
           </Route>
+
           <Route path="/Photos">
             <Photos />
           </Route>
-          {/* <Route path="/Header">
-            <Header />
-          </Route> */}
+         
           <Route path="/Clients">
             <Clients />
           </Route>
+
           <Route path="/Slideshow">
             <Slideshow />
           </Route>
+
           <Route path="/">
             <Home />
           </Route>
+
         </Switch>
       </BrowserRouter>
     </>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import localData from './Api/localData';
+import localData from './src/Api/localData';
 
 // function App() {
 //   const [shoots, setShoots] = useState(localData.getAllShoots())

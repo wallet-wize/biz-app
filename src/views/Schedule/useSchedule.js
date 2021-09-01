@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as createId } from "uuid";
 import faker from "faker";
 import fakerE from "faker-extra";
-import { seedValue } from "faker/locale/de";
+// import { seedValue } from "faker/locale/de";
 
 const SHOOT_TYPES = ["Wedding", "Babyshower", "Profile", "Birthday"];
 
