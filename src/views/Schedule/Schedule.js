@@ -75,7 +75,7 @@ export const Schedule = () => {
 
   useEffect(() => {
     setDisplayedShoots(applySorting(shoots, sorting, search));
-  })
+  });
 
   if (editing) {
     return (
@@ -194,6 +194,12 @@ export const Schedule = () => {
           );
         })}
       </List>
+
+      <ButtonArea>
+        <StyledButton href="/" variant="contained">
+          Back
+        </StyledButton>
+      </ButtonArea>
     </Page>
   );
 };

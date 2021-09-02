@@ -60,7 +60,7 @@ export const Edit = (props) => {
   const handleDateChange = (event) =>
     onDateChange(new Date(event.target.value));
   const handleTypeChange = (event) => onTypeChange(event.target.value);
-
+ console.log(date)
   return (
     <Dialog open>
       <DialogContent>
@@ -84,7 +84,8 @@ export const Edit = (props) => {
               label="Date"
               type={date}
               onChange={handleDateChange}
-              value={format(date, "yyyy-MM-dd")}
+
+              value={date ? format((date), "yyyy-MM-dd") : ''}
               InputLabelProps={{
                 shrink: true,
               }}
